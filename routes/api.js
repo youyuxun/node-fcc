@@ -25,4 +25,14 @@ router.get('/timestamp/:date_string?', function(req, res, next) {
 	}
 });
 
+router.get('/whoami', function (req, res, next) {
+	const language = req.get('Accept-Language');
+	const software = req.get('User-Agent');
+	res.json({
+		ipaddress: req.ip,
+		language,
+		software,
+	})
+});
+
 module.exports = router;
